@@ -2,36 +2,29 @@ import moment, { Moment } from "moment";
 import { VacationOption } from "./types";
 
 class Vacation {
-  type: string;
-  options: VacationOption[];
+  periods: VacationOption[];
 
-  constructor(type: string) {
-    this.assertType(type);
-    this.type = type;
-    this.options = [];
+  constructor() {
+    this.periods = [];
   }
 
-  startVacationPeriod(
-    startDate: string,
-    type: "integral" | "partial",
-    numberOfDays: number,
-    sellingDays: number
-  ) {
+  startVacationPeriod({
+    initial_date,
+    type,
+    number_of_days,
+    selling_days,
+  }: VacationOption) {
     this.assertType(type);
 
-    numberOfDays = type === "integral" ? 30 : numberOfDays;
-    sellingDays = type === "integral" ? 0 : sellingDays;
+    number_of_days = type === "integral" ? 30 : number_of_days;
+    selling_days = type === "integral" ? 0 : selling_days;
 
-    this.options.push({
+    this.periods.push({
       type: type,
-      periods: [
-        {
-          initial_date: moment(startDate),
-          number_of_days: numberOfDays,
-          selling_days: sellingDays,
-          end_date: moment(startDate).add(numberOfDays, "days"),
-        },
-      ],
+      initial_date: moment(initial_date),
+      number_of_days,
+      selling_days,
+      end_date: moment(initial_date).add(number_of_days, "days"),
     });
   }
 
