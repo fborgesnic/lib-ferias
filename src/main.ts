@@ -18,6 +18,7 @@ class Vacation {
 
     number_of_days = type === "integral" ? 30 : number_of_days;
     selling_days = type === "integral" ? 0 : selling_days;
+    type = number_of_days < 30 ? "partial" : "integral";
 
     this.periods.push({
       type: type,
