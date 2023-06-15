@@ -1,5 +1,7 @@
 class Vacation {
-  constructor(type) {
+  type: string;
+
+  constructor(type: string) {
     if (!type) {
       throw new TypeError("type must be specified");
     }

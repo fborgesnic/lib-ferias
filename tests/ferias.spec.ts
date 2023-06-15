@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Vacation } from "../main";
+import { Vacation } from "../src/main";
 
 describe("#Vacation()", function () {
   context("with arguments", function () {
