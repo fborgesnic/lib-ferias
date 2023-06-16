@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import moment from "moment";
-import { Vacation } from "../main";
+import { Vacation } from "../src/main";
 
 describe("#Vacation()", function () {
   context("with vacation type=integral", function () {
