@@ -221,4 +221,38 @@ describe("#Vacation()", function () {
       );
     });
   });
+
+  context("with invalid days", function () {
+    it("should throw an error with invalid type", function () {
+      const vacation = new Vacation();
+      const fn = function () {
+        vacation.startVacationPeriod({
+          initial_date: "2023-06-15",
+          type: "integral",
+          number_of_days: 6,
+          selling_days: 0,
+        });
+      };
+
+      expect(fn).to.throw(
+        "vacation type needs to be partial with number of days less than 30 days"
+      );
+    });
+
+    it("should throw an error with invalid number of days", function () {
+      const vacation = new Vacation();
+      const fn = function () {
+        vacation.startVacationPeriod({
+          initial_date: "2023-06-15",
+          type: "partial",
+          number_of_days: 9,
+          selling_days: 0,
+        });
+      };
+
+      expect(fn).to.throw(
+        "you must pass a valid number of days: 7, 8, 10, 14, 15, 16, 20 or 30"
+      );
+    });
+  });
 });
