@@ -254,5 +254,19 @@ describe("#Vacation()", function () {
         "you must pass a valid number of days: 7, 8, 10, 14, 15, 16, 20 or 30"
       );
     });
+
+    it("should throw an error with 30 days and type partial", function () {
+      const vacation = new Vacation();
+      const fn = function () {
+        vacation.startVacationPeriod({
+          initial_date: "2023-06-15",
+          type: "partial",
+          number_of_days: 30,
+          selling_days: 0,
+        });
+      };
+
+      expect(fn).to.throw("vacation with 30 days needs to be integral");
+    });
   });
 });

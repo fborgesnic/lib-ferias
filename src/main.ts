@@ -44,6 +44,10 @@ class Vacation {
         "vacation type needs to be partial with number of days less than 30 days"
       );
     }
+
+    if (number_of_days === 30 && type === "partial") {
+      throw new TypeError("vacation with 30 days needs to be integral");
+    }
   }
 
   #assertNumberOfDays(number_of_days: number) {
