@@ -32,7 +32,7 @@ Depois de fazer o import da biblioteca, é preciso instanciar o objeto:
 const ferias = new Vacation();
 ferias.startVacationPeriod({
   initial_date: "2023-06-23",
-  type: "partial",
+  type: "integral",
   number_of_days: 30,
   selling_days: 0
 })
